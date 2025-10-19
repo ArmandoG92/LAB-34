@@ -3,7 +3,7 @@
     "path": "~/GitHub/LAB-34/heatmap_uoftcoders.R",
     "project_path": "heatmap_uoftcoders.R",
     "type": "r_source",
-    "hash": "3821014588",
+    "hash": "0",
     "contents": "",
     "dirty": true,
     "created": 1760528049511.0,
@@ -12,15 +12,15 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "137,0",
-        "scrollLine": "107"
+        "cursorPosition": "136,20",
+        "scrollLine": "108"
     },
     "folds": "",
     "lastKnownWriteTime": 1760528108,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1760831598962,
+    "last_content_update": 1760832096532,
     "read_only": false,
     "read_only_alternatives": []
 }

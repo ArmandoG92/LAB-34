@@ -1,9 +1,9 @@
 {
     "id": "D08C1E71",
-    "path": null,
-    "project_path": null,
+    "path": "~/GitHub/LAB-34/lab34 md.Rmd",
+    "project_path": "lab34 md.Rmd",
     "type": "r_markdown",
-    "hash": "0",
+    "hash": "400746851",
     "contents": "",
     "dirty": false,
     "created": 1760828845755.0,
@@ -13,15 +13,15 @@
         "tempName": "Untitled1",
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "1,0",
-        "scrollLine": "0"
+        "cursorPosition": "146,20",
+        "scrollLine": "122"
     },
     "folds": "",
-    "lastKnownWriteTime": 5716229369224186196,
-    "encoding": "",
+    "lastKnownWriteTime": 1760832842,
+    "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1760828845755,
+    "last_content_update": 1760832842929,
     "read_only": false,
     "read_only_alternatives": []
 }
