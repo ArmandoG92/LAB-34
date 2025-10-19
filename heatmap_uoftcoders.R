@@ -4,6 +4,7 @@
 #                  #
 ####################
 # Hecho con gusto por Carla Carolina P?rez Hern?ndez (UAEH)
+#Alumno: Luis Armando González Arellano
 
 # Laboratorio - MAPA DE CALOR -T?RMICO- with pheatmap
 # DATOS GENETICOS TOMADOS DE Sahir Bhatnagar.
@@ -48,14 +49,29 @@ install.packages("pheatmap")
 library(pheatmap)
 
 # importar datos
+genes <- as.matrix(
+  read.csv("heatmap_data.csv",
+          sep = ",",
+          header = T,
+          row.names = 1))
 
+annotation_row <-(
+  read.csv("annotation_row.csv",
+           sep = ",",
+           header = T,
+           row.names = 1))
 
+annotation_col <- (
+  read.csv("annotation_col.csv",
+           sep = ",",
+           header = T,
+           row.names = 1))
 
 #Plotting with pheatmap!
-
+pheatmap(genes)
 
 #change font
-
+pheatmap(genes, frontsize= 6 )
 
 
 #default is clustering rows and columns
@@ -64,55 +80,60 @@ library(pheatmap)
 
 #cluster by gene - groups of similar genes----LOS GENES ESTAN EN LOS RENGLONES
 #POR DEFAULT CLUSTEA LOS RENGLONES
+pheatmap(genes, frontsize= 6, cluster_rows = T, cluster_cols = F )
 
 
 #cluster by patient - groups of similar patients 
 #DEBES HACER QUE LAS COLUMNAS SE TRANFOMEN A RENGLONES
-
+pheatmap(genes, frontsize= 6, cluster_rows = F, cluster_cols = T )
 
 #usually order by both
-
+pheatmap(genes, frontsize= 6, cluster_rows = T, cluster_cols = T )
 
 #seeing some patterns emerge - but what do they mean? Great time to add annotation to our plot
-
+pheatmap(genes, frontsize= 6, cluster_rows = T, cluster_cols = T, annotation_row = annotation_row)
 
 
 #add to row first, see that genes are clustering according to the pathways they belong to
-
+pheatmap(genes, frontsize= 6, cluster_rows = T, cluster_cols = T, annotation_row = annotation_row, annotation_col = annotation_col)
 
 #now have information about the drug and condition 
 
 #GRAFICO COMPLETO G1
+pheatmap(genes, frontsize= 6, cluster_rows = T, cluster_cols = T, annotation_row = annotation_row, annotation_col = annotation_col, treeheight_row = 0, treeheight_col = 0, main = "expresion genetica")
 
 
 #GRAFICO QUITANDO CLUSTERS (ARBOLES DE AGRUPACI?N-DENDOGRAMAS)
 
 
 #take a smaller subset 
-
+sub <- genes[c(1:5, 55:60), c(1:5, 20:35, 55:60)]
 
 #con subset 1 (COPIAR G1)
+pheatmap(sub, frontsize= 6, cluster_rows = T, cluster_cols = T, annotation_row = annotation_row, annotation_col = annotation_col, treeheight_row = 0, treeheight_col = 0, main = "expresion genetica")
 
 # con subset 2 -- DESPLEGAR VALORES
+pheatmap(sub, frontsize= 6, cluster_rows = T, cluster_cols = T, annotation_row = annotation_row, annotation_col = annotation_col, treeheight_row = 0, treeheight_col = 0, main = "expresion genetica", fontsize = 8, annotation_legend = FALSE, display_numbers = TRUE, fontsize_number = 6 )
 
 
 # con color
-# viridis, magma, plasma, cividis, inferno
 
+
+# viridis, magma, plasma, cividis, inferno
+library(viridis)
+
+pheatmap(sub, frontsize= 6, cluster_rows = T, cluster_cols = T, annotation_row = annotation_row,
+         annotation_col = annotation_col, treeheight_row = 0, treeheight_col = 0,
+         main = "expresion genetica", fontsize = 8, annotation_legend = FALSE, display_numbers = TRUE,
+         fontsize_number = 6, col= viridis_pal(option = "viridis") (6))
 
 
 
 # elementos adicionales 
+dist(sub)
+pheatmap(cor(sub))
+trans <- t(sub)
 
-
-
-
-
+pheatmap(cor(trans))
 #####################################################################################################################
 
-## slightly artificial with color bar, without and with ordering:
-cc <- rainbow(nrow(Ca))
-heatmap(Ca, Rowv = FALSE, symm = TRUE, RowSideColors = cc, ColSideColors = cc,
-        margins = c(6,6))
-heatmap(Ca,		symm = TRUE, RowSideColors = cc, ColSideColors = cc,
-        margins = c(6,6))
